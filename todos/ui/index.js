@@ -8,7 +8,7 @@ window.$api.on('ipcMain:todo:added', (data) => {
   if (!listEl) return;
 
   const newItem = document.createElement('li');
-  newItem.classList.add('list-group-item')
+  newItem.classList.add('list-group-item');
   newItem.innerHTML = data;
   listEl.appendChild(newItem);
 });

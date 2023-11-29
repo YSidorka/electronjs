@@ -1,9 +1,8 @@
 const { app, ipcMain, Menu } = require('electron');
-const { createWindow, getMainWindow, getAddWindow } = require('./service');
+const { createWindow, getMainWindow } = require('./service');
 const { menuTemplate } = require('./menu-template');
 
 app.on('ready', async () => {
-  console.log('Ready...');
   const mainWindow = createWindow();
   const mainMenu = Menu.buildFromTemplate(menuTemplate);
   Menu.setApplicationMenu(mainMenu);
@@ -12,7 +11,6 @@ app.on('ready', async () => {
   mainWindow.on('closed', () => app.quit());
 });
 
-ipcMain.on('todo:add', async (event, data) => {
-  getAddWindow().close();
-  getMainWindow().webContents.send('ipcMain:todo:added', data);
+ipcMain.on('tray:test', async (event, data) => {
+  getMainWindow().webContents.send('ipcMain:test', data);
 });

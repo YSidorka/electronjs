@@ -30,7 +30,7 @@ function createAddWindow() {
     }
   });
   addWindow.loadURL(`file://${__dirname}/ui/add.html`);
-  addWindow.on('closed', () => addWindow = null);
+  addWindow.on('closed', () => (addWindow = null));
 }
 
 function clearTodoList() {
