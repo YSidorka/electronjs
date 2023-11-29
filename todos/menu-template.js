@@ -11,15 +11,9 @@ const menuTemplate = [
         click: createAddWindow
       },
       {
-        type: 'separator',
+        type: 'separator'
       },
-      {
-        label: 'Quit',
-        click() {
-          app.quit();
-        },
-        accelerator: process.platform === 'darwin' ? 'Command+Q' : 'Ctrl+Q'
-      }
+      { role: 'quit' }
     ]
   }
 ];
@@ -34,13 +28,16 @@ if (process.env.NODE_ENV !== 'production') {
   menuTemplate.push({
     label: 'Developer Tools',
     submenu: [
-      {
-        label: 'Toggle Developer Tools',
-        accelerator: process.platform === 'darwin' ? 'Command+Alt+i' : 'Ctrl+Shift+i',
-        click(item, focusedWindow) {
-          focusedWindow.toggleDevTools();
-        }
-      }
+      { role: 'reload' },
+      { role: 'forceReload' },
+      { role: 'toggleDevTools' }
+      // {
+      //   label: 'Toggle Developer Tools',
+      //   accelerator: process.platform === 'darwin' ? 'Command+Alt+i' : 'Ctrl+Shift+i',
+      //   click(item, focusedWindow) {
+      //     focusedWindow.toggleDevTools();
+      //   }
+      // }
     ]
   });
 }

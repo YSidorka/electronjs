@@ -16,7 +16,6 @@
           <form>
             <div class="my-3">
               <label for="formFile" class="form-label">Task name</label>
-
               <div class="input-group">
                 <input class="form-control" type="text" id="formFile" autofocus />
                 <button class="btn btn-outline-primary" type="submit">Add</button>
@@ -32,8 +31,6 @@
     document.querySelector('form').addEventListener('submit', (event) => {
       event.preventDefault();
       const taskName = event.target?.querySelector('input').value;
-
-      debugger;
       window.$electron.createTask(taskName);
     });
   </script>
