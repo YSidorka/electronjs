@@ -1,5 +1,4 @@
-const { app } = require('electron');
-const { createAddWindow } = require('./service');
+const { createAddWindow, clearTodoList } = require('./service');
 
 const menuTemplate = [
   {
@@ -9,6 +8,10 @@ const menuTemplate = [
         label: 'New Todo',
         accelerator: process.platform === 'darwin' ? 'Command+N' : 'Ctrl+N',
         click: createAddWindow
+      },
+      {
+        label: 'Clear list',
+        click: clearTodoList
       },
       {
         type: 'separator'
@@ -41,8 +44,6 @@ if (process.env.NODE_ENV !== 'production') {
     ]
   });
 }
-
-console.log(menuTemplate);
 
 module.exports = {
   menuTemplate

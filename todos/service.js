@@ -33,9 +33,15 @@ function createAddWindow() {
   addWindow.on('closed', () => addWindow = null);
 }
 
+function clearTodoList() {
+  return mainWindow?.webContents.send('ipcMain:todo:clearList');
+}
+
 module.exports = {
   getMainWindow: () => mainWindow,
   getAddWindow: () => addWindow,
   createWindow,
-  createAddWindow
+  createAddWindow,
+
+  clearTodoList
 };

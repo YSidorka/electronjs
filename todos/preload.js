@@ -1,13 +1,13 @@
 const { ipcRenderer, contextBridge } = require('electron');
 
-contextBridge.exposeInMainWorld('$electron', {
-  createTask: (data) => {
-    ipcRenderer.send('todo:add', data);
+contextBridge.exposeInMainWorld('$api', {
+
+  send: (channel, data) => {
+    ipcRenderer.send(channel, data)
   },
 
-  receiveTaskData: (callback) => {
-    ipcRenderer.on('ipcMain:todo:added', (event, data) => {
-      callback(data);
-    });
+  on: (channel, callback) => {
+    ipcRenderer.on(channel, (event, ...args) => callback(...args))
   }
+
 });

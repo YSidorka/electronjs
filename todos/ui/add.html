@@ -30,8 +30,9 @@
   <script>
     document.querySelector('form').addEventListener('submit', (event) => {
       event.preventDefault();
-      const taskName = event.target?.querySelector('input').value;
-      window.$electron.createTask(taskName);
+
+      const { value } = event.target.querySelector('input');
+      if (value) window.$api.send('todo:add', value);
     });
   </script>
 </html>
