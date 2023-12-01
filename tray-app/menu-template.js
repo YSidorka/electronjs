@@ -1,14 +1,13 @@
 const menuTemplate = [
+  { label: '' },
   {
     label: 'File',
     submenu: [{ role: 'quit' }]
   }
 ];
 
-if (process.platform === 'darwin') {
-  menuTemplate.unshift({
-    label: ''
-  });
+if (process.platform !== 'darwin') {
+  menuTemplate.shift();
 }
 
 if (process.env.NODE_ENV !== 'production') {

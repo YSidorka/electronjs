@@ -49,7 +49,7 @@ function toggleWindow(window, event, bounds, args) {
   if (process.platform === 'win32') {
     window.setBounds({
       x: trayX + Math.floor((trayWidth - width)/ 2),
-      y: trayY - height - 10,
+      y: trayY - height,
       height,
       width
     });
