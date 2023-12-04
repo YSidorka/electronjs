@@ -28,7 +28,20 @@ function onClick(event, bounds, args) {
 }
 
 function onRightClick() {
-  const trayMenu = Menu.buildFromTemplate([{ role: 'quit' }]);
+  const template = [{ role: 'quit' }];
+
+  if (process.env.NODE_ENV !== 'production') {
+    template.unshift({
+      label: 'Developer Tools',
+      submenu: [
+        { role: 'reload' },
+        { role: 'forceReload' },
+        { role: 'toggleDevTools' }
+      ]
+    });
+  }
+
+  const trayMenu = Menu.buildFromTemplate(template);
   this.popUpContextMenu(trayMenu);
 }
 
